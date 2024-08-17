@@ -14,8 +14,17 @@ class Scholar extends DatabaseConnection{
         foreach ($data as $index => $row){
             $title = $row['title'];
             $author = $row['author'];
+            $year = $row['year'];
+            $category = $row['category'];
+            $futurework = $row['futurework'];
+            $problem = $row['problem'];
+            $recomm = $row['recomm'];
+            $description = $row['description'];
+            $groupNo = $row['groupNo'];
+            $faculty = $row['faculty'];
        
-         $sql ="INSERT INTO objects(title, authr) VALUES('$title', '$author')";
+         $sql ="INSERT INTO `researches`(`title`, `problem`, `author`, `year`, `category`, `futurework`, `recomm`, `description`, `groupNo`, `faculty`) 
+                 VALUES('$title', '$problem','$author','$year','$category','$futurework','$recomm','$description','$groupNo','$faculty')";
          $res = $conn->query($sql);
          if($res){
             $results['success'][] = [
