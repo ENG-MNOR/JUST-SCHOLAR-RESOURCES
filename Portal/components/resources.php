@@ -660,6 +660,7 @@
 
         },
         success: function(response) {
+          console.log(response)
           var tr = "<tr>";
           response.data.forEach(value => {
             var authors = value.author.split(",");
@@ -680,17 +681,25 @@
 
             tr += `</tr>`
           })
-          $("#resources tbody").html("")
-          $("#resources tbody").html(tr)
-          if ($("#resources").DataTable().settings().length) {
-        // If DataTable is already initialized, destroy and reinitialize
-        $("#resources").DataTable().clear().rows.add($("#resources").find('tbody tr')).draw();
-      } else {
-    
-        $("#resources").DataTable({
-         
-        });
-      }
+          
+        // First, clear the existing rows
+$("#resources tbody").html(tr);
+
+// Check if DataTable is already initialized
+if ($.fn.DataTable.isDataTable("#resources")) {
+    // If it is, destroy the old DataTable instance
+    $("#resources").DataTable().clear().destroy();
+}
+
+// Reinitialize the DataTable
+$("#resources").DataTable({
+    paging: true,       // Enable pagination
+    searching: true,    // Enable searching
+    ordering: true,     // Enable column ordering
+    pageLength: 10,     // Set initial page length
+});
+
+       
           console.log(response)
         },
         error: function(res) {
@@ -740,8 +749,9 @@
         success: function(response) {
           $("#save-data").text("Upload");
           readAllData();
-          $(this).modal("hide");
+          $("#preview").modal("hide");
           console.log(response)
+          alert("All data uploaded successfully")
         },
         error: function(res) {
           $("#save-data").text("Upload");
