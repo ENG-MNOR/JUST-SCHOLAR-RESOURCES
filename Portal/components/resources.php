@@ -330,33 +330,18 @@
           <div class="row">
             <div class="card w-100">
               <div class="card-body">
-                <table class="table table-hover">
+                <table class="table table-hover " id="resources">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Author(s)</th>
+                      <th scope="col">Year</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td colspan="2">Larry the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
+
+
                   </tbody>
                 </table>
               </div>
@@ -449,6 +434,45 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
   <script>
+    readAllData();
+
+    function readAllData() {
+      $.ajax({
+        method: "POST",
+        dataType: "json",
+        url: "../api/scholar.api.php",
+        data: {
+          "action": "ReadAllResources",
+
+        },
+        success: function(response) {
+          var tr = "<tr>";
+          response.data.forEach(value => {
+            var authors = value.author.split(",");
+            var authorsList = authors.map((author, index) => {
+              const colorClasses = ['bg-primary', 'bg-secondary', 'bg-success', 'bg-danger', 'bg-warning', 'bg-info'];
+              const colorClass = colorClasses[index % colorClasses.length];
+              return `<span class="badge ${colorClass} me-2">${author}</span>`;
+            });
+
+            tr += `<td>${value.id}</td>`
+            tr += `<td>${value.title}</td>`
+            if (authors.length > 5)
+              tr += `<td>${authorsList[0]} <span class="badge bg-secondary">et al.</span></td>`
+            else
+              tr += `<td>${authorsList.join("-")}</td>`
+            tr += `<td>${value.year}</td>`
+            tr += `</tr>`
+          })
+          $("#resources tbody").html("")
+          $("#resources tbody").html(tr)
+          console.log(response)
+        },
+        error: function(res) {
+          console.log(res);
+        }
+      })
+    }
     var date_file = {}
     $("#save-data").click(() => {
       $.ajax({
@@ -459,10 +483,17 @@
           "action": "UploadResearchProjects",
           "data": date_file
         },
+        beforeSend: () => {
+          $("#save-data").text("Uploading....");
+        },
         success: function(response) {
+          $("#save-data").text("Upload");
+          readAllData();
+          $(this).modal("hide");
           console.log(response)
         },
         error: function(res) {
+          $("#save-data").text("Upload");
           console.log(res);
         }
       })

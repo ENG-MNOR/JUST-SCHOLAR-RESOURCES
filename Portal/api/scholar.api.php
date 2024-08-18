@@ -49,6 +49,33 @@ class Scholar extends DatabaseConnection{
         ];
         echo json_encode($res);
     }
+    public static function  ReadAllResources($conn){
+        $results = [
+            'success' => [],
+            'errors' => []
+        ];
+        $response= array();
+        extract($_POST);
+        $sql = "SELECT *FROM `researches`";
+        $res = $conn->query($sql);
+        if($res){
+            $data=[];
+            while($rows=$res->fetch_assoc()){
+                $data[]=$rows;
+            }
+            $response = [
+                'status' => 'true',
+              "data"=>$data
+            ];
+        }else
+            $response = [
+                'status' => 'false',
+                "message" => $conn->error
+            ];
+     
+      
+        echo json_encode($response);
+    }
 }
 
 
