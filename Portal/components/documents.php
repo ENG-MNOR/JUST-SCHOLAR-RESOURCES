@@ -27,7 +27,7 @@
           "Font Awesome 5 Brands",
           "simple-line-icons",
         ],
-        urls: ["assets/css/fonts.min.css"],
+        urls: ["../assets/css/fonts.min.css"],
       },
       active: function() {
         sessionStorage.fonts = true;
@@ -61,10 +61,10 @@
         <div class="logo-header" data-background-color="dark">
           <a href="index.html" class="logo">
             <img
-              src="assets/img/kaiadmin/logo_light.svg"
+              src="../assets/img/images.png"
               alt="navbar brand"
               class="navbar-brand"
-              height="20" />
+              height="55" />
           </a>
           <div class="nav-toggle">
             <button class="btn btn-toggle toggle-sidebar">
@@ -96,7 +96,7 @@
               <div class="collapse" id="dashboard">
                 <ul class="nav nav-collapse">
                   <li>
-                    <a href="./index.html">
+                  <a href="../index.html">
                       <span class="sub-item">Dashboard</span>
                     </a>
                   </li>
@@ -123,7 +123,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="components/documents.php">
+                    <a href="./documents.php">
                       <span class="sub-item">Documents List</span>
                     </a>
                   </li>
@@ -134,7 +134,7 @@
                   </li>
 
                   <li>
-                    <a href="components/notifications.html">
+                    <a href="./faq.php">
                       <span class="sub-item">Questions - FAQ</span>
                     </a>
                   </li>

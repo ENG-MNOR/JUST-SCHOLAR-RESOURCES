@@ -96,7 +96,7 @@
               <div class="collapse" id="dashboard">
                 <ul class="nav nav-collapse">
                   <li>
-                    <a href="../index.html">
+                  <a href="../index.html">
                       <span class="sub-item">Dashboard</span>
                     </a>
                   </li>
@@ -128,7 +128,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="components/gridsystem.html">
+                    <a href="./gridsystem.html">
                       <span class="sub-item">Users</span>
                     </a>
                   </li>
@@ -191,10 +191,10 @@
           <div class="logo-header" data-background-color="dark">
             <a href="index.html" class="logo">
               <img
-                src="assets/img/kaiadmin/logo_light.svg"
+                src="../assets/img/images.png"
                 alt="navbar brand"
                 class="navbar-brand"
-                height="20" />
+                height="55" />
             </a>
             <div class="nav-toggle">
               <button class="btn btn-toggle toggle-sidebar">
@@ -214,7 +214,7 @@
         <nav
           class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
           <div class="container-fluid">
-            <!-- <nav
+            <nav
               class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
               <div class="input-group">
                 <div class="input-group-prepend">
@@ -227,7 +227,7 @@
                   placeholder="Search ..."
                   class="form-control" />
               </div>
-            </nav> -->
+            </nav>
 
             <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
               <li
@@ -311,24 +311,12 @@
 
       <div class="container">
         <div class="page-inner">
-        <div id="loadingOverlay" class="d-none">
-    <div class="d-flex justify-content-center align-items-center vh-100">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
-</div>
-
           <div
             class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
             <div>
-              <h3 class="fw-bold mb-3">Scholars Resources</h3>
-              <button class="btn btn-success import" id="import-button">Import</button>
-              <button class="btn btn-success" id="export" onclick="ExportData('resources','resources.csv')">Export</button>
-              <button class="btn btn-success" id="manual">Add Manual</button>
-              
-              <input type="file" id="file-input" hidden />
-
+              <h3 class="fw-bold mb-3">FAQ Questions</h3>
+              <!-- <button class="btn btn-danger" id="downloadAllBtn">Erase All</button> -->
+         
             </div>
           
             <!-- <div class="ms-md-auto py-2 py-md-0">
@@ -342,13 +330,13 @@
           <div class="row">
             <div class="card w-100">
               <div class="card-body">
-                <table class="table table-hover " id="resources">
+                <table class="table table-hover " id="faq">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Title</th>
-                      <th scope="col">Author(s)</th>
-                      <th scope="col">Year</th>
+                      <th scope="col" >#QID</th>
+                      <th scope="col">User</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Data</th>
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
@@ -382,189 +370,35 @@
     <!-- End Custom template -->
   </div>
   <!-- add -->
-
-  <div class="modal fade bd-example-modal-lg addModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-         <div class="row">
-          <div class="col-12">
-            <div class="form-group">
-              <label for="">Title</label>
-              <input type="text" class="form-control title">
-            </div>
-
-          </div>
-          <div class="col-12">
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1">Problem</label>
-            <textarea class="form-control problem" id="problem" rows="3"></textarea>
-          </div>
-            
-          </div>
-          <div class="col-12">
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1">Authors</label>
-            <textarea class="form-control author" id="author" rows="2"></textarea>
-           
-          </div>
-            
-          </div>
-
-          <div class="col-12">
-            <div class="row">
-              <div class="col-6">
-              <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Year</label>
-                  <select class="form-control year">
-  <option value="2024">2024</option>
-  <option value="2023">2023</option>
-</select>
-                
-                </div>
-              </div>
-              <div class="col-6">
-              <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Category</label>
-                  <select class="form-control category">
-                  <option value="machine learn">ML</option>
-                  <option value="iOT">IOT</option>
-                
-                </select>
-                
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12">
-         <div class="row">
-          <div class="col-6">
-            <div class="form-group">
-                <label for="">Future Work</label>
-                <input type="text" class="form-control futurework">
-              </div>
-          </div>
-          <div class="col-6">
-              <div class="form-group">
-                  <label for="">Recommendation</label>
-                  <input type="text" class="form-control recomm">
-                </div>
-          </div>
-          </div>
-          
-          </div>
-         <div class="col-12">
-          
-         <div class="row">
-            <div class="col-6">
-            <label for="">Faculty</label>
-          <select class="form-control faculty">
-            <option value="IT">IT</option>
-            <option value="health">Health</option>
-          </select>
-            </div>
-            <div class="col-6">
-            <label for="">Group Number</label>
-            <input type="text" class="form-control groupNo">
-            </div>
-          </div>
-
-         </div>
-         <div class="col-12">
-         <div class="form-group">
-    <label for="exampleFormControlFile1">Document</label>
-    <input type="file" class="form-control-file doc" id="exampleFormControlFile1">
-  </div>
-         </div>
-
-         <div class="col-12">
-         <div class="form-group">
-    <label for="exampleFormControlTextarea1">Description</label>
-    <textarea class="form-control description" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-  </div>
-
-
-         </div>
-       
-        <div class="my-3 mx-2">
-          <button class="btn btn-success" id="save">Save</button>
-          <button class="btn btn-danger" id="cancel">Cancel</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- end -->
-
-  <div class="modal fade info-modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal fade bd-example-modal-lg" id="answer" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+   
     <div class="modal-content">
-     
-      <div class="modal-body">
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>WARNING!</strong> You should check Sample Format To Upload Data.
-  <a href="#"  onclick="ExportData('sample','sampleResources.csv')">Download Sample</a>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Answer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
   
-</div>
-      </div>
-     
     </div>
-  </div>
-</div>
-<!-- e -->
-<table class="table table-striped" hidden id="sample">
-          <thead>
-            <tr>
-              <th scope="col">title</th>
-              <th scope="col">problem</th>
-              <th scope="col">author</th>
-              <th scope="col">year</th>
-              <th scope="col">category</th>
-              <th scope="col">futurework</th>
-              <th scope="col">recomm</th>
-              <th scope="col">description</th>
-              <th scope="col">groupNo</th>
-              <th scope="col">faculty</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>BRAIN STROKE</td>
-              <td>ct scans</td>
-              <td>Abdirahman, Mohamed</td>
-              <td>2024</td>
-              <td>Machine Learning</td>
-              <td>EHR INTEGRATION</td>
-              <td>NONE</td>
-              <td>TEST</td>
-              <td>100</td>
-              <td>Computer and IT</td>
-            </tr>
-          </tbody>
-        </table>
-<!-- e -->
-  <div class="modal fade bd-example-modal-lg preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content inner-body">
-        <table class="table table-striped" id="preview-table">
-          <thead>
-            <tr>
-              <th scope="col">Title</th>
-              <th scope="col">Author(s)</th>
-            </tr>
-          </thead>
-          <tbody>
+        <div class="modal-body">
+        <div class="p-1">
+      <p class="fw-bold text-muted q">In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available</p>
 
-          </tbody>
-        </table>
-        <div class="my-3">
-          <button class="btn btn-success" id="save-data">Upload</button>
-          <button class="btn btn-danger" id="cancel">Cancel</button>
         </div>
-      </div>
+      <div class="form-group">
+    <label for="exampleFormControlTextarea1">Answer</label>
+    <textarea class="form-control ans" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <div class="my-3">
+    <button class="btn btn-success submit">Submit</button>
+  </div>
+        </div>
     </div>
   </div>
-
+</div>
+ 
+  <!-- end -->
 
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
@@ -607,87 +441,45 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
   <script>
-    $("#manual").click(()=>{
-      $(".addModal").modal("show")
-    })
-    $("#save").click(()=>{
-      const formData = new FormData();
-  
-  // Manually append form fields to the FormData object
-  formData.append('title', document.querySelector('.title').value);
-  formData.append('problem', document.querySelector('.problem').value);
-  formData.append('author', document.querySelector('.author').value);
-  formData.append('year', document.querySelector('.year').value);
-  formData.append('category', document.querySelector('.category').value);
-  formData.append('futurework', document.querySelector('.futurework').value);
-  formData.append('recomm', document.querySelector('.recomm').value);
-  formData.append('faculty', document.querySelector('.faculty').value);
-  formData.append('groupNo', document.querySelector('.groupNo').value);
-  formData.append('description', document.querySelector('.description').value);
-  formData.append('doc', $(".doc")[0].files[0]);
-  formData.append('action',"InsertData");
-  SaveData(formData);
-      
-    })
-    function SaveData(data){
-      $.ajax({
-        method: "POST",
-        processData : false,
-        cache : false,
-        contentType : false,
-        dataType: "json",
-        url: "../api/scholar.api.php",
-        data:data,
-        success: function(response) {
-          alert(response.message)
-          readAllData();
-        },
-        error: function(res) {
-          console.log(res);
-    
-        }
-      })
-    }
+
+    //  donwload all
+   
+
     readAllData();
+   
     function readAllData() {
-     
       $.ajax({
         method: "POST",
         dataType: "json",
         url: "../api/scholar.api.php",
         data: {
-          "action": "ReadAllResources",
+          "action": "GetFaq",
 
         },
         success: function(response) {
           var tr = "<tr>";
           response.data.forEach(value => {
-            var authors = value.author.split(",");
-            var authorsList = authors.map((author, index) => {
-              const colorClasses = ['bg-primary', 'bg-secondary', 'bg-success', 'bg-danger', 'bg-warning', 'bg-info'];
-              const colorClass = colorClasses[index % colorClasses.length];
-              return `<span class="badge ${colorClass} me-2">${author}</span>`;
-            });
-
-            tr += `<td>${value.id}</td>`
-            tr += `<td>${value.title}</td>`
-            if (authors.length > 5)
-              tr += `<td>${authorsList[0]} <span class="badge bg-secondary">et al.</span></td>`
-            else
-              tr += `<td>${authorsList.join("-")}</td>`
-            tr += `<td>${value.year}</td>`
-            tr += `<td><a class='btn btn-danger del' onclick="DeleteData('${value.id}')">Delete</a></td>`;
-
+            const encodedValue = encodeURIComponent(JSON.stringify(value));
+    tr += `<td title="Click Here to view and answer this questions"> 
+               <strong onclick="ViewQ('${encodedValue}')" class='fs-5 text-primary text-underline' style='cursor: pointer;'>
+               ${value.id}</strong>
+           </td>`;      
+           
+           tr += `<td class='document' class='fw-bold'>${value.userId}</td>`
+            tr += `<td class='document' class='fw-bold'>${value.status}</td>`
+            tr += `<td>${value.action}</td>`
+            tr += `<td><a class='btn btn-danger del' onclick="DeleteData(${value.id})">Delete</a></td>`;
             tr += `</tr>`
+
           })
-          $("#resources tbody").html("")
-          $("#resources tbody").html(tr)
-          if ($("#resources").DataTable().settings().length) {
+          $("#faq tbody").html("")
+          $("#faq tbody").html(tr)
+          if ($("#faq").DataTable().settings().length) {
         // If DataTable is already initialized, destroy and reinitialize
-        $("#resources").DataTable().clear().rows.add($("#resources").find('tbody tr')).draw();
+        $("#faq").DataTable().clear().rows.add($("#faq").find('tbody tr')).draw();
       } else {
     
-        $("#resources").DataTable({
+        $("#faq").DataTable({
          
         });
       }
@@ -695,20 +487,82 @@
         },
         error: function(res) {
           console.log(res);
-        },
-        complete: function() {
-            // Hide the loading overlay by adding the 'd-none' class
-          
         }
       })
     }
+
+    var dataIO = null;
+    function ViewQ(data){
+        const d = JSON.parse(decodeURIComponent(data));
+        dataIO = d;
+        $(".q").text(d.question + " ??")
+        $("#answer").modal("show")
+    }
+
+
+    $(".submit").click(()=> {
+        SubmitAnswer();
+    })
+    function SubmitAnswer(){
+        $.ajax({
+            method: "POST",
+            dataType: "json",
+            url: "../api/scholar.api.php",
+            data: {
+              "action": "SubmitAnswer",
+              "qid": dataIO.id,
+              "answer": $(".ans").val(),
+              user : 100
+            },
+            success: function(response) {
+              console.log(response)
+              $("#answer").modal("hide")
+              readAllData()
+            },
+            error: function(res) {
+              console.log(res);
+            }
+        })
+    }
+
+
+
+
+
+
+    function Download(filename) {
+    const filePath = `../uploads/${filename}`;
+    
+    fetch(filePath, { method: 'HEAD' })
+        .then(response => {
+            if (response.ok) {
+      
+                const link = document.createElement('a');
+                link.href = filePath;
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+            
+                alert('Error: File does not exist, In this folder. Check if it exists');
+            }
+        })
+        .catch(error => {
+        
+            alert('Error: Unable to check file status.');
+            console.error('Error:', error);
+        });
+}
+
+
     function DeleteData(id) {
       $.ajax({
         method: "POST",
         dataType: "json",
         url: "../api/scholar.api.php",
         data: {
-          "action": "DeleteData",
+          "action": "DeleteFq",
           id: id
 
         },
