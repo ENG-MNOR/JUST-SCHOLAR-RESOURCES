@@ -96,7 +96,7 @@
               <div class="collapse" id="dashboard">
                 <ul class="nav nav-collapse">
                   <li>
-                    <a href="../index.html">
+                  <a href="../index.html">
                       <span class="sub-item">Dashboard</span>
                     </a>
                   </li>
@@ -214,7 +214,7 @@
         <nav
           class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
           <div class="container-fluid">
-            <!-- <nav
+            <nav
               class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
               <div class="input-group">
                 <div class="input-group-prepend">
@@ -227,7 +227,7 @@
                   placeholder="Search ..."
                   class="form-control" />
               </div>
-            </nav> -->
+            </nav>
 
             <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
               <li
@@ -262,7 +262,7 @@
                   aria-expanded="false">
                   <div class="avatar-sm">
                     <img
-                      src="../assets/img/profile.jpg"
+                      src="assets/img/profile.jpg"
                       alt="..."
                       class="avatar-img rounded-circle" />
                   </div>
@@ -277,7 +277,7 @@
                       <div class="user-box">
                         <div class="avatar-lg">
                           <img
-                            src="../assets/img/profile.jpg"
+                            src="assets/img/profile.jpg"
                             alt="image profile"
                             class="avatar-img rounded" />
                         </div>
@@ -311,24 +311,11 @@
 
       <div class="container">
         <div class="page-inner">
-        <div id="loadingOverlay" class="d-none">
-    <div class="d-flex justify-content-center align-items-center vh-100">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
-</div>
-
           <div
             class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
             <div>
-              <h3 class="fw-bold mb-3">Scholars Resources</h3>
-              <button class="btn btn-success import" id="import-button">Import</button>
-              <button class="btn btn-success" id="export" onclick="ExportData('resources','resources.csv')">Export</button>
-              <button class="btn btn-success" id="manual">Add Manual</button>
-              
-              <input type="file" id="file-input" hidden />
-
+              <h3 class="fw-bold mb-3">Research & Papers Documents</h3>
+              <button class="btn btn-success" id="downloadAllBtn">Download All Documents</button>
             </div>
           
             <!-- <div class="ms-md-auto py-2 py-md-0">
@@ -342,13 +329,13 @@
           <div class="row">
             <div class="card w-100">
               <div class="card-body">
-                <table class="table table-hover " id="resources">
+                <table class="table table-hover " id="documents">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Title</th>
-                      <th scope="col">Author(s)</th>
-                      <th scope="col">Year</th>
+                      <th scope="col">Document</th>
+                      <th scope="col">Owned</th>
+                      <th scope="col">Uploaded Data</th>
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
@@ -383,188 +370,8 @@
   </div>
   <!-- add -->
 
-  <div class="modal fade bd-example-modal-lg addModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-         <div class="row">
-          <div class="col-12">
-            <div class="form-group">
-              <label for="">Title</label>
-              <input type="text" class="form-control title">
-            </div>
-
-          </div>
-          <div class="col-12">
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1">Problem</label>
-            <textarea class="form-control problem" id="problem" rows="3"></textarea>
-          </div>
-            
-          </div>
-          <div class="col-12">
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1">Authors</label>
-            <textarea class="form-control author" id="author" rows="2"></textarea>
-           
-          </div>
-            
-          </div>
-
-          <div class="col-12">
-            <div class="row">
-              <div class="col-6">
-              <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Year</label>
-                  <select class="form-control year">
-  <option value="2024">2024</option>
-  <option value="2023">2023</option>
-</select>
-                
-                </div>
-              </div>
-              <div class="col-6">
-              <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Category</label>
-                  <select class="form-control category">
-                  <option value="machine learn">ML</option>
-                  <option value="iOT">IOT</option>
-                
-                </select>
-                
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12">
-         <div class="row">
-          <div class="col-6">
-            <div class="form-group">
-                <label for="">Future Work</label>
-                <input type="text" class="form-control futurework">
-              </div>
-          </div>
-          <div class="col-6">
-              <div class="form-group">
-                  <label for="">Recommendation</label>
-                  <input type="text" class="form-control recomm">
-                </div>
-          </div>
-          </div>
-          
-          </div>
-         <div class="col-12">
-          
-         <div class="row">
-            <div class="col-6">
-            <label for="">Faculty</label>
-          <select class="form-control faculty">
-            <option value="IT">IT</option>
-            <option value="health">Health</option>
-          </select>
-            </div>
-            <div class="col-6">
-            <label for="">Group Number</label>
-            <input type="text" class="form-control groupNo">
-            </div>
-          </div>
-
-         </div>
-         <div class="col-12">
-         <div class="form-group">
-    <label for="exampleFormControlFile1">Document</label>
-    <input type="file" class="form-control-file doc" id="exampleFormControlFile1">
-  </div>
-         </div>
-
-         <div class="col-12">
-         <div class="form-group">
-    <label for="exampleFormControlTextarea1">Description</label>
-    <textarea class="form-control description" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-  </div>
-
-
-         </div>
-       
-        <div class="my-3 mx-2">
-          <button class="btn btn-success" id="save">Save</button>
-          <button class="btn btn-danger" id="cancel">Cancel</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- end -->
-
-  <div class="modal fade info-modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-     
-      <div class="modal-body">
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>WARNING!</strong> You should check Sample Format To Upload Data.
-  <a href="#"  onclick="ExportData('sample','sampleResources.csv')">Download Sample</a>
-  
-</div>
-      </div>
-     
-    </div>
-  </div>
-</div>
-<!-- e -->
-<table class="table table-striped" hidden id="sample">
-          <thead>
-            <tr>
-              <th scope="col">title</th>
-              <th scope="col">problem</th>
-              <th scope="col">author</th>
-              <th scope="col">year</th>
-              <th scope="col">category</th>
-              <th scope="col">futurework</th>
-              <th scope="col">recomm</th>
-              <th scope="col">description</th>
-              <th scope="col">groupNo</th>
-              <th scope="col">faculty</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>BRAIN STROKE</td>
-              <td>ct scans</td>
-              <td>Abdirahman, Mohamed</td>
-              <td>2024</td>
-              <td>Machine Learning</td>
-              <td>EHR INTEGRATION</td>
-              <td>NONE</td>
-              <td>TEST</td>
-              <td>100</td>
-              <td>Computer and IT</td>
-            </tr>
-          </tbody>
-        </table>
-<!-- e -->
-  <div class="modal fade bd-example-modal-lg preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content inner-body">
-        <table class="table table-striped" id="preview-table">
-          <thead>
-            <tr>
-              <th scope="col">Title</th>
-              <th scope="col">Author(s)</th>
-            </tr>
-          </thead>
-          <tbody>
-
-          </tbody>
-        </table>
-        <div class="my-3">
-          <button class="btn btn-success" id="save-data">Upload</button>
-          <button class="btn btn-danger" id="cancel">Cancel</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
 
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
@@ -607,110 +414,103 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
   <script>
-    $("#manual").click(()=>{
-      $(".addModal").modal("show")
-    })
-    $("#save").click(()=>{
-      const formData = new FormData();
-  
-  // Manually append form fields to the FormData object
-  formData.append('title', document.querySelector('.title').value);
-  formData.append('problem', document.querySelector('.problem').value);
-  formData.append('author', document.querySelector('.author').value);
-  formData.append('year', document.querySelector('.year').value);
-  formData.append('category', document.querySelector('.category').value);
-  formData.append('futurework', document.querySelector('.futurework').value);
-  formData.append('recomm', document.querySelector('.recomm').value);
-  formData.append('faculty', document.querySelector('.faculty').value);
-  formData.append('groupNo', document.querySelector('.groupNo').value);
-  formData.append('description', document.querySelector('.description').value);
-  formData.append('doc', $(".doc")[0].files[0]);
-  formData.append('action',"InsertData");
-  SaveData(formData);
-      
-    })
-    function SaveData(data){
-      $.ajax({
-        method: "POST",
-        processData : false,
-        cache : false,
-        contentType : false,
-        dataType: "json",
-        url: "../api/scholar.api.php",
-        data:data,
-        success: function(response) {
-          alert(response.message)
-          readAllData();
-        },
-        error: function(res) {
-          console.log(res);
-    
-        }
-      })
-    }
+
+    //  donwload all
+    document.getElementById('downloadAllBtn').addEventListener('click', function() {
+    const documents = document.querySelectorAll('#documents .document');
+
+    documents.forEach(doc => {
+        const filename = doc.textContent.trim();
+        const filePath = `../uploads/${filename}`;
+
+        fetch(filePath, { method: 'HEAD' })
+            .then(response => {
+                if (response.ok) {
+                    const link = document.createElement('a');
+                    link.href = filePath;
+                    link.download = filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                    console.warn(`File ${filename} does not exist. Skipping.`);
+                }
+            })
+            .catch(error => {
+                console.error(`Error downloading ${filename}:`, error);
+            });
+    });
+
+    alert('Download process initiated for available files, Completed.');
+});
+
+
     readAllData();
+   
     function readAllData() {
-     
       $.ajax({
         method: "POST",
         dataType: "json",
         url: "../api/scholar.api.php",
         data: {
-          "action": "ReadAllResources",
+          "action": "ReadAllDocs",
 
         },
         success: function(response) {
-          console.log(response)
           var tr = "<tr>";
           response.data.forEach(value => {
-            var authors = value.author.split(",");
-            var authorsList = authors.map((author, index) => {
-              const colorClasses = ['bg-primary', 'bg-secondary', 'bg-success', 'bg-danger', 'bg-warning', 'bg-info'];
-              const colorClass = colorClasses[index % colorClasses.length];
-              return `<span class="badge ${colorClass} me-2">${author}</span>`;
-            });
-
             tr += `<td>${value.id}</td>`
+            tr += `<td class='document'>${value.name}</td>`
             tr += `<td>${value.title}</td>`
-            if (authors.length > 5)
-              tr += `<td>${authorsList[0]} <span class="badge bg-secondary">et al.</span></td>`
-            else
-              tr += `<td>${authorsList.join("-")}</td>`
-            tr += `<td>${value.year}</td>`
-            tr += `<td><a class='btn btn-danger del' onclick="DeleteData('${value.id}')">Delete</a></td>`;
-
+            tr += `<td>${value.action}</td>`
+            tr += `<td><a class='btn btn-danger del' onclick="Download('${value.name}')">Download</a></td>`;
             tr += `</tr>`
+
           })
-          
-        // First, clear the existing rows
-$("#resources tbody").html(tr);
-
-// Check if DataTable is already initialized
-if ($.fn.DataTable.isDataTable("#resources")) {
-    // If it is, destroy the old DataTable instance
-    $("#resources").DataTable().clear().destroy();
-}
-
-// Reinitialize the DataTable
-$("#resources").DataTable({
-    paging: true,       // Enable pagination
-    searching: true,    // Enable searching
-    ordering: true,     // Enable column ordering
-    pageLength: 10,     // Set initial page length
-});
-
-       
+          $("#documents tbody").html("")
+          $("#documents tbody").html(tr)
+          if ($("#documents").DataTable().settings().length) {
+        // If DataTable is already initialized, destroy and reinitialize
+        $("#documents").DataTable().clear().rows.add($("#documents").find('tbody tr')).draw();
+      } else {
+    
+        $("#documents").DataTable({
+         
+        });
+      }
           console.log(response)
         },
         error: function(res) {
           console.log(res);
-        },
-        complete: function() {
-            // Hide the loading overlay by adding the 'd-none' class
-          
         }
       })
     }
+    function Download(filename) {
+    const filePath = `../uploads/${filename}`;
+    
+    fetch(filePath, { method: 'HEAD' })
+        .then(response => {
+            if (response.ok) {
+      
+                const link = document.createElement('a');
+                link.href = filePath;
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+            
+                alert('Error: File does not exist, In this folder. Check if it exists');
+            }
+        })
+        .catch(error => {
+        
+            alert('Error: Unable to check file status.');
+            console.error('Error:', error);
+        });
+}
+
+
     function DeleteData(id) {
       $.ajax({
         method: "POST",
@@ -749,9 +549,8 @@ $("#resources").DataTable({
         success: function(response) {
           $("#save-data").text("Upload");
           readAllData();
-          $("#preview").modal("hide");
+          $(this).modal("hide");
           console.log(response)
-          alert("All data uploaded successfully")
         },
         error: function(res) {
           $("#save-data").text("Upload");
