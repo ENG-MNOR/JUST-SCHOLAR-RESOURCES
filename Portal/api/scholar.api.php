@@ -1,8 +1,47 @@
 <?php
 include '../config/conn.php';
+include '../utils/php.utils.php';
 
 
 class Scholar extends DatabaseConnection{
+
+    public static function  InsertData($conn){
+        $response= array();
+        extract($_POST);
+         $fileName = uploadFile("doc","Doc");
+    
+         $sql ="INSERT INTO `researches`(`title`, `problem`, `author`, `year`, `category`, `futurework`, `recomm`, `description`, `groupNo`, `faculty`) 
+                 VALUES('$title', '$problem','$author','$year','$category','$futurework','$recomm','$description','$groupNo','$faculty')";
+         $res = $conn->query($sql);
+         if($res){
+            $response = [
+                "status"=> true,
+                "message"=> "Inserted Successfully",
+                "doc"=> $fileName
+            ];
+
+            $lastInsertediD = Scholar::lastInsertIUID($conn);
+            Scholar::InsertDocument($conn,$fileName,$lastInsertediD);
+         }else{
+            $response = [
+                "status"=> false,
+                "message"=> $conn->error,
+                "doc"=> $fileName
+            ];
+         }
+
+        echo json_encode($response);
+    }
+
+
+    public static function  InsertDocument($conn, $name, $id, $type="thesis"){
+         $sql ="INSERT INTO `documents`(`name`, `type`, `paperId`) VALUES ('$name','$type','$id')";
+         $res = $conn->query($sql);
+         if($res){
+           return true;
+         }else{
+          return false;}
+    }
 
     public static function  UploadResearchProjects($conn){
         $results = [
@@ -66,6 +105,67 @@ class Scholar extends DatabaseConnection{
             $response = [
                 'status' => 'true',
               "data"=>$data
+            ];
+        }else
+            $response = [
+                'status' => 'false',
+                "message" => $conn->error
+            ];
+     
+      
+        echo json_encode($response);
+    }
+    public static function  ReadAllDocs($conn){
+        $results = [
+            'success' => [],
+            'errors' => []
+        ];
+        $response= array();
+        extract($_POST);
+        $sql = "SELECT doc.id, doc.name, doc.action, researches.title FROM `documents` doc 
+join researches
+on doc.paperId=researches.id";
+        $res = $conn->query($sql);
+        if($res){
+            $data=[];
+            while($rows=$res->fetch_assoc()){
+                $data[]=$rows;
+            }
+            $response = [
+                'status' => 'true',
+              "data"=>$data
+            ];
+        }else
+            $response = [
+                'status' => 'false',
+                "message" => $conn->error
+            ];
+     
+      
+        echo json_encode($response);
+    }
+    public static function  lastInsertIUID($conn){
+       $id ="0";
+     
+        $sql = "SELECT id FROM `researches` ORDER BY id Desc LIMIT 1";
+        $res = $conn->query($sql);
+        if($res){
+          $rows=$res->fetch_assoc();
+          $id = $rows['id'];
+        }
+      return $id;
+    }
+    public static function  DeleteData($conn){
+       
+        $response= array();
+        extract($_POST);
+        $sql = "DELETE FROM `researches` where id ='$id'";
+        $res = $conn->query($sql);
+        if($res){
+         
+            $response = [
+                'status' => 'true',
+              "message"=>"Data has been deleted successfully"
             ];
         }else
             $response = [
