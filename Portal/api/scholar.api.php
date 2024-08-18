@@ -115,6 +115,33 @@ class Scholar extends DatabaseConnection{
       
         echo json_encode($response);
     }
+    public static function  READLATEST($conn){
+        $results = [
+            'success' => [],
+            'errors' => []
+        ];
+        $response= array();
+        extract($_POST);
+        $sql = "SELECT *FROM `researches` ORDER BY action DESC LIMIT 15";
+        $res = $conn->query($sql);
+        if($res){
+            $data=[];
+            while($rows=$res->fetch_assoc()){
+                $data[]=$rows;
+            }
+            $response = [
+                'status' => 'true',
+              "data"=>$data
+            ];
+        }else
+            $response = [
+                'status' => 'false',
+                "message" => $conn->error
+            ];
+     
+      
+        echo json_encode($response);
+    }
     public static function  ReadAllDocs($conn){
         $results = [
             'success' => [],
@@ -134,6 +161,31 @@ on doc.paperId=researches.id";
             $response = [
                 'status' => 'true',
               "data"=>$data
+            ];
+        }else
+            $response = [
+                'status' => 'false',
+                "message" => $conn->error
+            ];
+     
+      
+        echo json_encode($response);
+    }
+    public static function  fetch($conn){
+        $results = [
+            'success' => [],
+            'errors' => []
+        ];
+        $response= array();
+        extract($_POST);
+        $sql = "SELECT COUNT(*) as num from $table";
+        $res = $conn->query($sql);
+        if($res){
+           
+            $rows=$res->fetch_assoc();
+            $response = [
+                'status' => 'true',
+              "num"=>$rows['num']
             ];
         }else
             $response = [
